@@ -160,7 +160,7 @@ public class MenuTransition : MonoBehaviour
 
     public void OnStartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Prologue");
     }
 }
 
