@@ -8,4 +8,5 @@ public class DialogueLine
     [TextArea(1, 3)]
     public string dialogueText;
     public Sprite speakerPortrait;
+    public int speakerID; // 0 = izquierda, 1 = derecha
 }
