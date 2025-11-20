@@ -13,7 +13,12 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameBox;
     public TextMeshProUGUI textBox;
     public GameObject dialogueGameObject;
-    public Image speakerImage;
+    // public Image speakerImage;
+
+    [Header("Speaker Mask Parents")]
+    public Image speakerLeftMask;
+    public Image speakerRightMask;
+
 
     [Header("Speakers")]
     public Image speakerLeftImage;
@@ -23,7 +28,7 @@ public class DialogueManager : MonoBehaviour
     public float inactiveScale = 0.2f;
 
     public Color activeColor = Color.white;
-    public Color inactiveColor = new Color(0.4f, 0.4f, 0.4f);
+    public Color inactiveColor = new Color(0.4f, 0.4f, 0.4f, 1f);
 
     [Header("Text Configuration")]
     public float typingSpeed = 0.05f;
@@ -82,6 +87,10 @@ public class DialogueManager : MonoBehaviour
 
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
+        // Evita interacciones si el diálogo ya terminó
+        if (DialogueManager.instance.dialogueFinished)
+            return;
+        
         // Evita doble click instantáneo (bug de diálogos cortos)
         if (Time.time - lastClickTime < clickCooldown)
             return;
@@ -112,9 +121,9 @@ public class DialogueManager : MonoBehaviour
             {
                 textBox.text = "";
                 nameBox.text = "";
-                speakerImage.sprite = null;
+                //speakerImage.sprite = null;
                 dialogueFinished = true;
-                dialogueGameObject.SetActive(false);
+                StartCoroutine(DialogueTransitions.instance.PlayExitTransition());
             }
         }
     }

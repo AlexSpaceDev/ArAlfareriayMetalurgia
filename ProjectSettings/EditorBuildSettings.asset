@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Prologue.unity
     guid: b3ec796e7a3fd3d488c1db09ce4a17ef
   - enabled: 1
+    path: Assets/Scenes/AlfareriaAR.unity
+    guid: 1d67ba9128619d64cb696b9bf07ab388
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
