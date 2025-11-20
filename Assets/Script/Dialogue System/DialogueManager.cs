@@ -13,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameBox;
     public TextMeshProUGUI textBox;
     public GameObject dialogueGameObject;
-    //public Image speakerImage;
+    // public Image speakerImage;
 
     [Header("Speaker Mask Parents")]
     public Image speakerLeftMask;

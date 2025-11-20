@@ -28,6 +28,13 @@ public class DialogueTransitions : MonoBehaviour
     public CanvasGroup dialogueCanvasGroup;
     public CanvasGroup opcionesCanvasGroup;
 
+    [Header("Option Screens")]
+    public GameObject alfareriaOption;
+    public CanvasGroup alfareriaCanvasGroup;
+
+    public GameObject metalurgiaOption;
+    public CanvasGroup metalurgiaCanvasGroup;
+
     // Save final positions
     private Vector2 alfarFinal;
     private Vector2 metalFinal;
@@ -133,7 +140,6 @@ public class DialogueTransitions : MonoBehaviour
 
 
     // Options Transitions
-
     private IEnumerator FadeAndSlideInOptions()
     {
         // Ejecutar ambas animaciones al mismo tiempo
@@ -189,5 +195,131 @@ public class DialogueTransitions : MonoBehaviour
         }
     }
 
+    // Animación inversa para volver a mostrar opciones
+    private IEnumerator FadeAndSlideOutOptions()
+    {
+        IEnumerator fade = FadeOutOpciones();
+        IEnumerator slide = SlideOutOpciones();
+
+        StartCoroutine(fade);
+        StartCoroutine(slide);
+
+        bool fadeDone = false;
+        bool slideDone = false;
+
+        StartCoroutine(WaitFor(fade, () => fadeDone = true));
+        StartCoroutine(WaitFor(slide, () => slideDone = true));
+
+        while (!fadeDone || !slideDone)
+            yield return null;
+
+        opcionesJuego.SetActive(false);
+    }
+
+    private IEnumerator FadeOutOpciones()
+    {
+        float t = 0;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime / fadeInTime;
+            opcionesCanvasGroup.alpha = Mathf.Lerp(1, 0, t);
+            yield return null;
+        }
+    }
+
+    private IEnumerator SlideOutOpciones()
+    {
+        float t = 0;
+
+        Vector2 alfarStart = alfareriaBtn.anchoredPosition;
+        Vector2 metalStart = metalurgiaBtn.anchoredPosition;
+        Vector2 divStart = divisionImg.anchoredPosition;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime / slideInTime;
+            float eased = Mathf.SmoothStep(0, 1, t);
+
+            alfareriaBtn.anchoredPosition = alfarStart + new Vector2(-900 * eased, 0);
+            metalurgiaBtn.anchoredPosition = metalStart + new Vector2(900 * eased, 0);
+            divisionImg.anchoredPosition = divStart + new Vector2(0, 800 * eased);
+
+            yield return null;
+        }
+    }
+
+
+    // Animación para mostrar la pantalla seleccionada
+
+    // Abrir la pantalla de Alfarería
+    public void OnAlfareriaPressed()
+    {
+        StartCoroutine(OpenOptionScreen(alfareriaOption, alfareriaCanvasGroup));
+    }
+
+    // Abrir la pantalla de Metalurgia
+    public void OnMetalurgiaPressed()
+    {
+        StartCoroutine(OpenOptionScreen(metalurgiaOption, metalurgiaCanvasGroup));
+    }
+
+    // Transición para abrir la pantalla de opción seleccionada
+    private IEnumerator OpenOptionScreen(GameObject optionGO, CanvasGroup optionCG)
+    {
+        // Primero ocultamos las opciones generales
+        yield return StartCoroutine(FadeAndSlideOutOptions());
+
+        // Activamos el panel seleccionado
+        optionGO.SetActive(true);
+        optionCG.alpha = 0;
+
+        // Fade In suave
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / 0.4f;
+            optionCG.alpha = Mathf.Lerp(0, 1, t);
+            yield return null;
+        }
+    }
+
+
+    // Volver a las opciones principales desde una pantalla de opción
+    public void OnBackToOptions()
+    {
+        StartCoroutine(ReturnToMainOptions());
+    }
+
+    private IEnumerator ReturnToMainOptions()
+    {
+        // 1. Fade Out del panel activo
+        CanvasGroup activeGroup = null;
+        GameObject activeGO = null;
+
+        if (alfareriaOption.activeSelf)
+        {
+            activeGO = alfareriaOption;
+            activeGroup = alfareriaCanvasGroup;
+        }
+        else if (metalurgiaOption.activeSelf)
+        {
+            activeGO = metalurgiaOption;
+            activeGroup = metalurgiaCanvasGroup;
+        }
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / 0.4f;
+            activeGroup.alpha = Mathf.Lerp(1, 0, t);
+            yield return null;
+        }
+
+        activeGO.SetActive(false);
+
+        // 2. Mostrar de nuevo opciones
+        yield return StartCoroutine(FadeAndSlideInOptions());
+    }
 
 }
