@@ -50,6 +50,14 @@ public class DialogueTransitions : MonoBehaviour
         divFinal = divisionImg.anchoredPosition;
     }
 
+    private void Start()
+    {
+        if (GameData.directMetalurgia)
+        {
+            StartCoroutine(ActivateDirectMetalurgia());
+        }
+    }
+
     public IEnumerator PlayExitTransition()
     {
         // Fade and Slide out the dialogue UI
@@ -320,6 +328,26 @@ public class DialogueTransitions : MonoBehaviour
 
         // 2. Mostrar de nuevo opciones
         yield return StartCoroutine(FadeAndSlideInOptions());
+    }
+
+    // Corrutina para activar directamente Metalurgia si se indicó
+    private IEnumerator ActivateDirectMetalurgia()
+    {
+        // Desactivar diálogo completamente
+        DialogueManager.instance.dialogueGameObject.SetActive(false);
+
+        // Desactivar opciones del medio
+        opcionesJuego.SetActive(false);
+
+        yield return null; // un frame para que todo inicialice
+
+        // Activar panel Metalurgia directamente
+        metalurgiaOption.SetActive(true);
+        metalurgiaCanvasGroup.alpha = 1;
+
+        // MUY IMPORTANTE:
+        // Resetear el flag para que no afecte la próxima vez que entres
+        GameData.directMetalurgia = false;
     }
 
 }
