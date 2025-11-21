@@ -46,8 +46,6 @@ public class ImageTargetController : MonoBehaviour
             // Cambiar color a verde
             buttons[index].GetComponent<Image>().color = Color.green;
 
-            Debug.Log("Correcto! +" + points + " puntos");
-
             GameManager.Instance.OnTargetCompleted();
         }
         else

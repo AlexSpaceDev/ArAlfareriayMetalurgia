@@ -23,12 +23,22 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points)
     {
         totalScore += points;
+
+        HUDController.Instance.UpdateScore(totalScore);
+        HUDController.Instance.ShowFeedback(points);
     }
 
     public void OnTargetCompleted()
     {
         completedTargets++;
 
+        // Solo mostrar mensaje SI NO es el último target
+        if (completedTargets < targets.Length)
+        {
+            HUDController.Instance.ShowNextImageMessage();
+        }
+
+        // Si completó todos los targets
         if (completedTargets == targets.Length)
         {
             Debug.Log("Logrado! Puntaje final: " + totalScore);
