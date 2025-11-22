@@ -6,6 +6,12 @@ public class StartDialogue : MonoBehaviour
 
     void Start()
     {
+        if (GameData.directMetalurgia)
+        {
+            // Evitar que se muestr el diálogo
+            return;
+        }
+        
         DialogueManager.instance.StartDialogue(dialogueLines);
     }
 
