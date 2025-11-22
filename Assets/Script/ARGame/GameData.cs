@@ -16,4 +16,10 @@ public static class GameData
 
     // Qué final se debe mostrar al entrar a la escena final
     public static int finalToShow = 0; // 0 ninguno, 1-A, 2-B, 3-C, 4-D
+
+    // Pantalla de finales para mostrar
+    public static bool finalARevealed = false;
+    public static bool finalBRevealed = false;
+    public static bool finalCRevealed = false;
+    public static bool finalDRevealed = false;
 } 

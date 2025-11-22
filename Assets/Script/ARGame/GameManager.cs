@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Cargar punntaje según la escena
+        // Cargar puntaje según la escena
         if (currentGame == GameType.Alfareria)
             totalScore = GameData.scoreAlfareria;
         else 

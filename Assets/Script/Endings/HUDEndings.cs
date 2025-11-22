@@ -25,11 +25,11 @@ public class HUDEndings : MonoBehaviour
         switch (GameData.finalToShow)
         {
             case 1: // Final A
-                scoreText.text = $"Puntaje Alfarería: {alfareria}";
+                scoreText.text = $"Puntaje: {alfareria}";
                 break;
 
             case 2: // Final B
-                scoreText.text = $"Puntaje Metalurgia: {metalurgia}";
+                scoreText.text = $"Puntaje: {metalurgia}";
                 break;
 
             case 3: // Final C

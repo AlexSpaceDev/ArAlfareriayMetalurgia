@@ -15,19 +15,26 @@ public class FinalizarButton : MonoBehaviour
 
         // ---- LÓGICA DE FINALES ----
 
-        // FINAL D (extra) - Puntaje perfecto en ambos
+        // ----------------------------------------------------
+        // FINAL D (Perfecto en ambos)
+        // ----------------------------------------------------
         if (passedAlfareria && passedMetalurgia && alfareria == 10 && metalurgia == 10)
         {
+            GameData.finalAUnlocked = true;
+            GameData.finalBUnlocked = true;
+            GameData.finalCUnlocked = true;
             GameData.finalDUnlocked = true;
+
             GameData.finalToShow = 4;
             SceneManager.LoadScene("Endings");
             return;
         }
 
-        // Estamos en la escena AlfareriaScore
+        // ----------------------------------------------------
+        // FINAL A (Solo pasó Alfarería)
+        // ----------------------------------------------------
         if (current == "AlfareriaScore")
         {
-            // FINAL A - Solo pasó Alfarería
             if (!GameData.finalBUnlocked && !GameData.finalCUnlocked)
             {
                 GameData.finalAUnlocked = true;
@@ -37,10 +44,11 @@ public class FinalizarButton : MonoBehaviour
             }
         }
 
-        // Estamos en la escena MetalurgiaScore
+        // ----------------------------------------------------
+        // FINAL B (Solo pasó Metalurgia)
+        // ----------------------------------------------------
         if (current == "MetalurgiaScore")
         {
-            // FINAL B - Solo pasó Metalurgia
             if (!GameData.finalAUnlocked && !GameData.finalCUnlocked)
             {
                 GameData.finalBUnlocked = true;
@@ -50,8 +58,13 @@ public class FinalizarButton : MonoBehaviour
             }
         }
 
-        // FINAL C - Pasó ambos, pero no con puntaje perfecto
+        // ----------------------------------------------------
+        // FINAL C (Pasó ambos, pero no perfecto)
+        // ----------------------------------------------------
+        GameData.finalAUnlocked = true;
+        GameData.finalBUnlocked = true;
         GameData.finalCUnlocked = true;
+        
         GameData.finalToShow = 3;
         SceneManager.LoadScene("Endings");
     }
