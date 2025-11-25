@@ -9,10 +9,7 @@ public class GameManager : MonoBehaviour
     public enum GameType { Alfareria, Metalurgia }
     public GameType currentGame;
 
-    public int totalScore = 0;
-    public int completedTargets = 0;
-
-    public ImageTargetController[] targets;
+    public int targetIndex; // este target es el 1, 2, 3, 4 o 5
 
     private void Awake()
     {
@@ -22,78 +19,53 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         // Cargar puntaje según la escena
-        if (currentGame == GameType.Alfareria)
-            totalScore = GameData.scoreAlfareria;
-        else 
-            totalScore = GameData.scoreMetalurgia;
+        int score = (currentGame == GameType.Alfareria) 
+                    ? GameData.scoreAlfareria 
+                    : GameData.scoreMetalurgia;
 
-        HUDController.Instance.UpdateScore(totalScore);
+        HUDController.Instance.UpdateScore(score);
         
-        // Activar solo el primer target
-        ActivateTarget(0);
     }
 
     public void AddScore(int points)
     {
-        totalScore += points;
-
         // Guardar puntaje en GameData según el tipo
         if (currentGame == GameType.Alfareria)
-            GameData.scoreAlfareria = totalScore;
+            GameData.scoreAlfareria += points;
         else 
-            GameData.scoreMetalurgia = totalScore;
+            GameData.scoreMetalurgia += points;
 
-        HUDController.Instance.UpdateScore(totalScore);
+        HUDController.Instance.UpdateScore(
+            currentGame == GameType.Alfareria ?
+            GameData.scoreAlfareria : GameData.scoreMetalurgia
+        );
+
         HUDController.Instance.ShowFeedback(points);
     }
 
     public void OnTargetCompleted()
     {
-        completedTargets++;
-
-        // Solo mostrar mensaje SI NO es el último target
-        if (completedTargets < targets.Length)
-        {
-            HUDController.Instance.ShowNextImageMessage();
-        }
-
         // Si completó todos los targets
-        if (completedTargets == targets.Length)
+        if (targetIndex < 5)
         {
-            Debug.Log("Logrado! Puntaje final: " + totalScore);
+            // Cargar siguiente escena
+            string nextScene =
+                (currentGame == GameType.Alfareria)
+                ? "AlfareriaAR_" + (targetIndex + 1)
+                : "MetalurgiaAR_" + (targetIndex + 1);
 
-            // Guardar puntaje final (ya lo hacemos en AddScore, pero por si acaso)
-            if (currentGame == GameType.Alfareria)
-            GameData.scoreAlfareria = totalScore;
-            else
-            GameData.scoreMetalurgia = totalScore;
-
-            // Cambiar de escena después de 2 segundos
-            StartCoroutine(GoToScoreScene());
-
-            return;
+            SceneManager.LoadScene(nextScene);
         }
-
-        // Activar el siguiente
-        ActivateTarget(completedTargets);
-    }
-
-    private IEnumerator GoToScoreScene()
-    {
-        yield return new WaitForSeconds(2f); // Esperar 2 segundos
-
-        if (currentGame ==  GameType.Alfareria)
-            SceneManager.LoadScene("AlfareriaScore");
         else
-            SceneManager.LoadScene("MetalurgiaScore");
-    }
-
-    private void ActivateTarget(int index)
-    {
-        for (int i = 0; i < targets.Length; i++)
         {
-            targets[i].SetInteractable(i == index);
+            // Última escena
+            string scoreScene =
+                currentGame == GameType.Alfareria ?
+                "AlfareriaScore" : "MetalurgiaScore";
+
+            SceneManager.LoadScene(scoreScene);               
         }
     }
+
 }
 

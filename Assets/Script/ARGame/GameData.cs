@@ -7,6 +7,7 @@ public static class GameData
 
     // Indica si se entra directamente a una opción
     public static bool directMetalurgia = false;
+    public static bool directAlfareria = false;
 
     // Sistema de finales
     public static bool finalAUnlocked = false;

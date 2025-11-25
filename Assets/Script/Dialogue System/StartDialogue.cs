@@ -6,7 +6,7 @@ public class StartDialogue : MonoBehaviour
 
     void Start()
     {
-        if (GameData.directMetalurgia)
+        if (GameData.directMetalurgia || GameData.directAlfareria)
         {
             // Evitar que se muestr el diálogo
             return;

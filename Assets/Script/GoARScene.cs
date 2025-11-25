@@ -10,6 +10,6 @@ public class GoARScene : MonoBehaviour
 
     public void GoMetalurgia()
     {
-        SceneManager.LoadScene("MetalurgiaAR");
+        SceneManager.LoadScene("MetalurgiaAR_1");
     }
 }
