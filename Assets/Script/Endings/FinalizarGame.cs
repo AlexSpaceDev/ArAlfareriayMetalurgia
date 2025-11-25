@@ -26,6 +26,9 @@ public class FinalizarButton : MonoBehaviour
             GameData.finalDUnlocked = true;
 
             GameData.finalToShow = 4;
+
+            SaveManager.SaveGame();
+
             SceneManager.LoadScene("Endings");
             return;
         }
@@ -39,6 +42,9 @@ public class FinalizarButton : MonoBehaviour
             {
                 GameData.finalAUnlocked = true;
                 GameData.finalToShow = 1;
+
+                SaveManager.SaveGame();
+
                 SceneManager.LoadScene("Endings");
                 return;
             }
@@ -53,6 +59,9 @@ public class FinalizarButton : MonoBehaviour
             {
                 GameData.finalBUnlocked = true;
                 GameData.finalToShow = 2;
+
+                SaveManager.SaveGame();
+
                 SceneManager.LoadScene("Endings");
                 return;
             }
@@ -66,6 +75,9 @@ public class FinalizarButton : MonoBehaviour
         GameData.finalCUnlocked = true;
         
         GameData.finalToShow = 3;
+
+        SaveManager.SaveGame();
+        
         SceneManager.LoadScene("Endings");
     }
 }
