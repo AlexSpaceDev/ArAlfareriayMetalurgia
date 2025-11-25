@@ -462,14 +462,14 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: Referencial Prueba target 5
+  mTrackableName: Referencial Prueba target 4
   mInitializedInEditor: 1
   mDataSetPath: 
-  mAspectRatio: 1.4322034
+  mAspectRatio: 0.6657895
   mImageTargetType: 3
-  mWidth: 0.13964495
-  mHeight: 0.19999997
-  mRuntimeTexture: {fileID: 2800000, guid: 51d2d5793a231c549b018ed2b01d0570, type: 3}
+  mWidth: 0.19999999
+  mHeight: 0.1331579
+  mRuntimeTexture: {fileID: 2800000, guid: 65309011639da2d4c9064ab9112d1e24, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.ImageTargetPreview
   mObserverBehaviour: {fileID: 439819273}
   mHiddenRoot: {fileID: 0}
-  mTargetName: Referencial Prueba target 5
+  mTargetName: Referencial Prueba target 4
   mDatasetName: 
   mCastedBehaviour: {fileID: 439819273}
   mMeshFilter: {fileID: 0}
@@ -1205,13 +1205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261651599}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02030042, y: -0.67974085, z: -0.7329501, w: 0.018015208}
+  m_LocalRotation: {x: -0.32333866, y: -0.65025264, z: -0.26964223, w: 0.63238966}
   m_LocalPosition: {x: 0, y: 0.0721, z: -0.0066}
   m_LocalScale: {x: 0.060270995, y: 0.17411688, z: -0.015340481}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 439819274}
-  m_LocalEulerAnglesHint: {x: -94.316, y: -175.987, z: -0.90600586}
+  m_LocalEulerAnglesHint: {x: -130.569, y: 85.171, z: -172.982}
 --- !u!65 &1261651601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1864,8 +1864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 308.31116, y: -168.1886}
-  m_SizeDelta: {x: 332.6224, y: 55.823}
+  m_AnchoredPosition: {x: 260.10004, y: -164}
+  m_SizeDelta: {x: 236.2001, y: 47.4457}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481570485
 MonoBehaviour:
@@ -2023,8 +2023,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5d26fd42a50034a9a79dcbd47f3ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  currentGame: 1
-  targetIndex: 5
+  currentGame: 0
+  targetIndex: 4
 --- !u!1 &1603000749
 GameObject:
   m_ObjectHideFlags: 0

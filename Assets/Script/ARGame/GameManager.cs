@@ -18,28 +18,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Cargar puntaje según la escena
-        int score = (currentGame == GameType.Alfareria) 
-                    ? GameData.scoreAlfareria 
-                    : GameData.scoreMetalurgia;
+        string sceneName = SceneManager.GetActiveScene().name;
 
-        HUDController.Instance.UpdateScore(score);
+        // Si estamos en la primera escena del camino, reiniciar puntaje temporal
+        if (sceneName.EndsWith("_1"))
+        {
+            GameData.tempScore = 0;
+        }
+
+        // Cargar el puntaje temporal actual
+        HUDController.Instance.UpdateScore(GameData.tempScore);
         
     }
 
+    // Agregar puntaje temporal
     public void AddScore(int points)
     {
-        // Guardar puntaje en GameData según el tipo
-        if (currentGame == GameType.Alfareria)
-            GameData.scoreAlfareria += points;
-        else 
-            GameData.scoreMetalurgia += points;
+        GameData.tempScore += points;
 
-        HUDController.Instance.UpdateScore(
-            currentGame == GameType.Alfareria ?
-            GameData.scoreAlfareria : GameData.scoreMetalurgia
-        );
-
+        HUDController.Instance.UpdateScore(GameData.tempScore);
         HUDController.Instance.ShowFeedback(points);
     }
 
@@ -58,7 +55,18 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Última escena
+            // Última escena y evaluar si es nuevo récord
+            if (currentGame == GameType.Alfareria)
+            {
+                if(GameData.tempScore > GameData.scoreAlfareria)
+                    GameData.scoreAlfareria = GameData.tempScore;            
+            }
+            else
+            {
+                if(GameData.tempScore > GameData.scoreMetalurgia)
+                    GameData.scoreMetalurgia = GameData.tempScore;
+            }
+
             string scoreScene =
                 currentGame == GameType.Alfareria ?
                 "AlfareriaScore" : "MetalurgiaScore";
@@ -66,6 +74,5 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(scoreScene);               
         }
     }
-
 }
 
