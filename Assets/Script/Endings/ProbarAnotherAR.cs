@@ -8,4 +8,10 @@ public class ProbarAnotherAR : MonoBehaviour
         GameData.directMetalurgia = true;
         SceneManager.LoadScene("Prologue");
     }
+
+    public void ProbarAlfareria()
+    {
+        GameData.directAlfareria = true;
+        SceneManager.LoadScene("Prologue");
+    }
 }

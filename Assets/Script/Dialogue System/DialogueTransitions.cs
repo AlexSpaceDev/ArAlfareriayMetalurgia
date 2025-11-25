@@ -56,6 +56,10 @@ public class DialogueTransitions : MonoBehaviour
         {
             StartCoroutine(ActivateDirectMetalurgia());
         }
+        else if (GameData.directAlfareria)
+        {
+            StartCoroutine(ActivateDirectAlfareria());
+        }
     }
 
     public IEnumerator PlayExitTransition()
@@ -348,6 +352,26 @@ public class DialogueTransitions : MonoBehaviour
         // MUY IMPORTANTE:
         // Resetear el flag para que no afecte la próxima vez que entres
         GameData.directMetalurgia = false;
+    }
+
+    // Corrutina para activar directamente Alfarería si se indicó
+    private IEnumerator ActivateDirectAlfareria()
+    {
+        // Desactivar diálogo completamente
+        DialogueManager.instance.dialogueGameObject.SetActive(false);
+
+        // Desactivar opciones del medio
+        opcionesJuego.SetActive(false);
+
+        yield return null; // un frame para que todo inicialice
+
+        // Activar panel Alfareria directamente
+        alfareriaOption.SetActive(true);
+        alfareriaCanvasGroup.alpha = 1;
+
+        // MUY IMPORTANTE;
+        // Resetear el flag para que no afecte la próxima vez que entres
+        GameData.directAlfareria = false;
     }
 
 }

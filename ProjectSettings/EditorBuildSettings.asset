@@ -12,17 +12,44 @@ EditorBuildSettings:
     path: Assets/Scenes/Prologue.unity
     guid: b3ec796e7a3fd3d488c1db09ce4a17ef
   - enabled: 1
-    path: Assets/Scenes/AlfareriaAR.unity
-    guid: 1d67ba9128619d64cb696b9bf07ab388
+    path: Assets/Scenes/AlfareriaAR_1.unity
+    guid: e814f208e0b6d7242b0b54a1d65160e0
+  - enabled: 1
+    path: Assets/Scenes/AlfareriaAR_2.unity
+    guid: 7a528db546c8f404e9beb62bd33c3534
+  - enabled: 1
+    path: Assets/Scenes/AlfareriaAR_3.unity
+    guid: 6c78451c75dfd3f48abdcd33362d270e
+  - enabled: 1
+    path: Assets/Scenes/AlfareriaAR_4.unity
+    guid: 5c3fc17d883a55c4cb5b01f006a52854
+  - enabled: 1
+    path: Assets/Scenes/AlfareriaAR_5.unity
+    guid: 12a8d70b5f0998847b575ba06a811767
   - enabled: 1
     path: Assets/Scenes/AlfareriaScore.unity
     guid: 946730aea0719934b8d1301d442c37f7
   - enabled: 1
+    path: Assets/Scenes/MetalurgiaAR_1.unity
+    guid: 4f3c55abf91f754459b8ed9a26a42e89
+  - enabled: 1
+    path: Assets/Scenes/MetalurgiaAR_2.unity
+    guid: e7a14163921a1a04990319f44920985d
+  - enabled: 1
+    path: Assets/Scenes/MetalurgiaAR_3.unity
+    guid: f6696b46da095f54e9e28127683ebbf7
+  - enabled: 1
+    path: Assets/Scenes/MetalurgiaAR_4.unity
+    guid: e0d4a53a3b43bf84fbfff49a72d84ad3
+  - enabled: 1
+    path: Assets/Scenes/MetalurgiaAR_5.unity
+    guid: d9953381a37ee814487419dda7521b5c
+  - enabled: 1
+    path: Assets/Scenes/MetalurgiaScore.unity
+    guid: a5c42930a74564e40acdbcf8ebbfa7db
+  - enabled: 1
     path: Assets/Scenes/Endings.unity
     guid: 7d54dad23644c794288e048cb53abb7d
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

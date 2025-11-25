@@ -5,11 +5,11 @@ public class GoARScene : MonoBehaviour
 {
    public void GoAlfareria()
     {
-        SceneManager.LoadScene("AlfareriaAR");
+        SceneManager.LoadScene("AlfareriaAR_1");
     }
 
     public void GoMetalurgia()
     {
-        SceneManager.LoadScene("MetalurgiaAR");
+        SceneManager.LoadScene("MetalurgiaAR_1");
     }
 }
