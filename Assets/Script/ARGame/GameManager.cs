@@ -59,13 +59,15 @@ public class GameManager : MonoBehaviour
             if (currentGame == GameType.Alfareria)
             {
                 if(GameData.tempScore > GameData.scoreAlfareria)
-                    GameData.scoreAlfareria = GameData.tempScore;            
+                    GameData.scoreAlfareria = GameData.tempScore;           
             }
             else
             {
                 if(GameData.tempScore > GameData.scoreMetalurgia)
                     GameData.scoreMetalurgia = GameData.tempScore;
             }
+
+            SaveManager.SaveGame();
 
             string scoreScene =
                 currentGame == GameType.Alfareria ?

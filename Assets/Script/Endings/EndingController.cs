@@ -21,5 +21,9 @@ public class EndingController : MonoBehaviour
             case 3: finalC.SetActive(true); break;
             case 4: finalD.SetActive(true); break;
         }
+
+        // Limpiar el “final pendiente”
+        //GameData.finalToShow = 0;
+        //SaveManager.SaveGame();
     }
 }
