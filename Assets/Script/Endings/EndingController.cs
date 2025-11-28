@@ -3,27 +3,28 @@ using UnityEngine;
 public class EndingController : MonoBehaviour
 {
     public GameObject finalA;
-    public GameObject finalB;
     public GameObject finalC;
-    public GameObject finalD;
 
     void Start()
     {
+        // Apagar todo primero
         finalA.SetActive(false);
-        finalB.SetActive(false);
         finalC.SetActive(false);
-        finalD.SetActive(false);
 
+        // Mostrar final correcto
         switch (GameData.finalToShow)
         {
-            case 1: finalA.SetActive(true); break;
-            case 2: finalB.SetActive(true); break;
-            case 3: finalC.SetActive(true); break;
-            case 4: finalD.SetActive(true); break;
+            case 1: 
+                finalA.SetActive(true); 
+                break;
+
+            case 3: 
+                finalC.SetActive(true); 
+                break;
         }
 
-        // Limpiar el “final pendiente”
-        //GameData.finalToShow = 0;
-        //SaveManager.SaveGame();
+        // No limpiamos finalToShow inmediatamente
+        // para evitar bugs si el jugador vuelve accidentalmente
+        // a esta escena desde el menú.
     }
 }

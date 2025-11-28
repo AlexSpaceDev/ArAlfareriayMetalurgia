@@ -24,20 +24,12 @@ public class HUDEndings : MonoBehaviour
 
         switch (GameData.finalToShow)
         {
-            case 1: // Final A
-                scoreText.text = $"Puntaje: {alfareria}";
+            case 1: // Final A (solo completó un camino)
+                scoreText.text = $"Puntaje: {(alfareria > 0 ? alfareria : metalurgia)}";
                 break;
 
-            case 2: // Final B
-                scoreText.text = $"Puntaje: {metalurgia}";
-                break;
-
-            case 3: // Final C
+            case 3: // Final C (completó ambos)
                 scoreText.text = $"Alfarería: {alfareria}   |   Metalurgia: {metalurgia}";
-                break;
-
-            case 4: // Final D
-                scoreText.text = "20 PUNTOS";
                 break;
 
             default:
@@ -46,12 +38,12 @@ public class HUDEndings : MonoBehaviour
         }
     }
 
-    private void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
     }
 
-    private void GoToMenu()
+    public void GoToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }

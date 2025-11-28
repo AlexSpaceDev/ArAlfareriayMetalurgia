@@ -5,80 +5,47 @@ public class FinalizarButton : MonoBehaviour
 {
     public void Finalizar()
     {
-        string current = SceneManager.GetActiveScene().name;
-
         int alfareria = GameData.scoreAlfareria;
         int metalurgia = GameData.scoreMetalurgia;
 
-        bool passedAlfareria = alfareria >= 0;    // Puede ser 0 puntos, igual cuenta
-        bool passedMetalurgia = metalurgia >= 0;  // Igual
+        bool completedAlfareria = alfareria > 0;
+        bool completedMetalurgia = metalurgia > 0;
 
-        // ---- LÓGICA DE FINALES ----
-
-        // ----------------------------------------------------
-        // FINAL D (Perfecto en ambos)
-        // ----------------------------------------------------
-        if (passedAlfareria && passedMetalurgia && alfareria == 10 && metalurgia == 10)
+        // ---------------------------------------------------------
+        // SI YA DESBLOQUEÓ FINAL C → SIEMPRE MOSTRAR FINAL C
+        // ---------------------------------------------------------
+        if (GameData.finalCUnlocked)
         {
-            GameData.finalAUnlocked = true;
-            GameData.finalBUnlocked = true;
+            GameData.finalAUnlocked = true; // redundante pero seguro
             GameData.finalCUnlocked = true;
-            GameData.finalDUnlocked = true;
-
-            GameData.finalToShow = 4;
+            GameData.finalToShow = 3;
 
             SaveManager.SaveGame();
-
             SceneManager.LoadScene("Endings");
             return;
         }
 
-        // ----------------------------------------------------
-        // FINAL A (Solo pasó Alfarería)
-        // ----------------------------------------------------
-        if (current == "AlfareriaScore")
+        // ---------------------------------------------------------
+        // PRIMERA VEZ FINAL C → SI COMPLETÓ AMBOS CAMINOS
+        // ---------------------------------------------------------
+        if (completedAlfareria && completedMetalurgia)
         {
-            if (!GameData.finalBUnlocked && !GameData.finalCUnlocked)
-            {
-                GameData.finalAUnlocked = true;
-                GameData.finalToShow = 1;
+            GameData.finalAUnlocked = true;
+            GameData.finalCUnlocked = true;
+            GameData.finalToShow = 3;
 
-                SaveManager.SaveGame();
-
-                SceneManager.LoadScene("Endings");
-                return;
-            }
+            SaveManager.SaveGame();
+            SceneManager.LoadScene("Endings");
+            return;
         }
 
-        // ----------------------------------------------------
-        // FINAL B (Solo pasó Metalurgia)
-        // ----------------------------------------------------
-        if (current == "MetalurgiaScore")
-        {
-            if (!GameData.finalAUnlocked && !GameData.finalCUnlocked)
-            {
-                GameData.finalBUnlocked = true;
-                GameData.finalToShow = 2;
-
-                SaveManager.SaveGame();
-
-                SceneManager.LoadScene("Endings");
-                return;
-            }
-        }
-
-        // ----------------------------------------------------
-        // FINAL C (Pasó ambos, pero no perfecto)
-        // ----------------------------------------------------
+        // ---------------------------------------------------------
+        // FINAL A → SOLO COMPLETÓ UN CAMINO
+        // ---------------------------------------------------------
         GameData.finalAUnlocked = true;
-        GameData.finalBUnlocked = true;
-        GameData.finalCUnlocked = true;
-        
-        GameData.finalToShow = 3;
+        GameData.finalToShow = 1;
 
         SaveManager.SaveGame();
-        
         SceneManager.LoadScene("Endings");
     }
 }
-
