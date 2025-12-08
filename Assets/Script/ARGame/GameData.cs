@@ -8,6 +8,11 @@ public static class GameData
 
     // Puntuación temporal durante el juego
     public static int tempScore = 0;
+    public static int tempScoreAlfareria = 0;
+    public static int tempScoreMetalurgia = 0;
+
+    public static bool finishedAlfareria = false;
+    public static bool finishedMetalurgia = false;
 
     // Indica si se entra directamente a una opción
     public static bool directMetalurgia = false;
@@ -27,4 +32,23 @@ public static class GameData
     public static bool finalBRevealed = false;
     public static bool finalCRevealed = false;
     public static bool finalDRevealed = false;
+
+    // Nueva partida actual
+    public static bool isPlaying = false;
+
+    // Progreso temporal SOLO para la partida actual
+    public static bool tempCompletedAlfareria = false;
+    public static bool tempCompletedMetalurgia = false;
+
+
+    public static void StartNewRun()
+    {
+        isPlaying = true;
+        finalToShow = 0;
+        directAlfareria = false;
+        directMetalurgia = false;
+
+        // NO tocamos finalAUnlocked ni finalCUnlocked (son globales)
+    }
+
 } 

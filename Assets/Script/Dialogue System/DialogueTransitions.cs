@@ -348,10 +348,6 @@ public class DialogueTransitions : MonoBehaviour
         // Activar panel Metalurgia directamente
         metalurgiaOption.SetActive(true);
         metalurgiaCanvasGroup.alpha = 1;
-
-        // MUY IMPORTANTE:
-        // Resetear el flag para que no afecte la próxima vez que entres
-        GameData.directMetalurgia = false;
     }
 
     // Corrutina para activar directamente Alfarería si se indicó
@@ -367,11 +363,7 @@ public class DialogueTransitions : MonoBehaviour
 
         // Activar panel Alfareria directamente
         alfareriaOption.SetActive(true);
-        alfareriaCanvasGroup.alpha = 1;
-
-        // MUY IMPORTANTE;
-        // Resetear el flag para que no afecte la próxima vez que entres
-        GameData.directAlfareria = false;
+        alfareriaCanvasGroup.alpha = 1;        
     }
 
 }

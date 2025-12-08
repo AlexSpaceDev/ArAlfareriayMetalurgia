@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 195803673}
   - component: {fileID: 195803672}
   - component: {fileID: 195803674}
+  - component: {fileID: 195803675}
   m_Layer: 0
   m_Name: EndingManager
   m_TagString: Untagged
@@ -251,6 +252,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6a705badc4f424eb77ae6d9e893240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinalizarButton
+--- !u!114 &195803675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195803671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a96dbfbb8f794d41bd538c0fd357422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EndWay
+  EndAlfareriab: 1
+  EndMetalurgiab: 0
 --- !u!1 &624072090
 GameObject:
   m_ObjectHideFlags: 0

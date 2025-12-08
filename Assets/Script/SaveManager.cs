@@ -7,9 +7,6 @@ public static class SaveManager
         PlayerPrefs.SetInt("scoreAlfareria", GameData.scoreAlfareria);
         PlayerPrefs.SetInt("scoreMetalurgia", GameData.scoreMetalurgia);
 
-        PlayerPrefs.SetInt("directMetalurgia", GameData.directMetalurgia ? 1 : 0);
-        PlayerPrefs.SetInt("directAlfareria", GameData.directAlfareria ? 1 : 0);
-
         PlayerPrefs.SetInt("finalAUnlocked", GameData.finalAUnlocked ? 1 : 0);
         PlayerPrefs.SetInt("finalBUnlocked", GameData.finalBUnlocked ? 1 : 0);
         PlayerPrefs.SetInt("finalCUnlocked", GameData.finalCUnlocked ? 1 : 0);
@@ -35,9 +32,6 @@ public static class SaveManager
 
         GameData.scoreAlfareria = PlayerPrefs.GetInt("scoreAlfareria");
         GameData.scoreMetalurgia = PlayerPrefs.GetInt("scoreMetalurgia");
-
-        GameData.directMetalurgia = PlayerPrefs.GetInt("directMetalurgia") == 1;
-        GameData.directAlfareria = PlayerPrefs.GetInt("directAlfareria") == 1;
 
         GameData.finalAUnlocked = PlayerPrefs.GetInt("finalAUnlocked") == 1;
         GameData.finalBUnlocked = PlayerPrefs.GetInt("finalBUnlocked") == 1;

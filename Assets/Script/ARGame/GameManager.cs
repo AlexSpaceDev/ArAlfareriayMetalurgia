@@ -55,19 +55,17 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // Última escena y evaluar si es nuevo récord
+            // Última escena: guardar el puntaje temporal del camino
             if (currentGame == GameType.Alfareria)
             {
-                if(GameData.tempScore > GameData.scoreAlfareria)
-                    GameData.scoreAlfareria = GameData.tempScore;           
+                GameData.tempScoreAlfareria = GameData.tempScore;
+                GameData.finishedAlfareria = true;
             }
             else
             {
-                if(GameData.tempScore > GameData.scoreMetalurgia)
-                    GameData.scoreMetalurgia = GameData.tempScore;
+                GameData.tempScoreMetalurgia = GameData.tempScore;
+                GameData.finishedMetalurgia = true;
             }
-
-            SaveManager.SaveGame();
 
             string scoreScene =
                 currentGame == GameType.Alfareria ?

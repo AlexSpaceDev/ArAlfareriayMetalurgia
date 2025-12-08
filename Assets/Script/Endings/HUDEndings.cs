@@ -19,16 +19,19 @@ public class HUDEndings : MonoBehaviour
 
     private void UpdateScoreDisplay()
     {
-        int alfareria = GameData.scoreAlfareria;
-        int metalurgia = GameData.scoreMetalurgia;
+        int alfareria = GameData.tempScoreAlfareria;
+        int metalurgia = GameData.tempScoreMetalurgia;
 
         switch (GameData.finalToShow)
         {
-            case 1: // Final A (solo completó un camino)
-                scoreText.text = $"Puntaje: {(alfareria > 0 ? alfareria : metalurgia)}";
+            case 1: // Final A
+                scoreText.text =
+                    GameData.finishedAlfareria ?
+                    $"Puntaje: {alfareria}" :
+                    $"Puntaje: {metalurgia}";
                 break;
 
-            case 3: // Final C (completó ambos)
+            case 3: // Final C
                 scoreText.text = $"Alfarería: {alfareria}   |   Metalurgia: {metalurgia}";
                 break;
 
@@ -38,6 +41,7 @@ public class HUDEndings : MonoBehaviour
         }
     }
 
+
     public void QuitGame()
     {
         Application.Quit();
@@ -45,6 +49,12 @@ public class HUDEndings : MonoBehaviour
 
     public void GoToMenu()
     {
+        GameData.tempScore = 0;
+        GameData.tempScoreAlfareria = 0;
+        GameData.tempScoreMetalurgia = 0;
+        GameData.finishedAlfareria = false;
+        GameData.finishedMetalurgia = false;
+        GameData.finalToShow = 0;
         SceneManager.LoadScene("MainMenu");
     }
 }
