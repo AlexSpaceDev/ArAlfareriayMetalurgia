@@ -9,6 +9,7 @@ public class MenuTransition : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject introPanel;
     public GameObject endingPanel;
+    public GameObject coleccionablePanel;
 
     [Header("Main Menu Elements")]
     public RectTransform imageMain;
@@ -19,6 +20,9 @@ public class MenuTransition : MonoBehaviour
 
     [Header("Ending Elements")]
     public CanvasGroup endingCanvas;
+
+    [Header("Coleccionables Elements")]
+    public CanvasGroup coleccionableCanvas;
 
     // --- SETTINGS ---
     public float moveDuration = 0.8f;
@@ -62,6 +66,15 @@ public class MenuTransition : MonoBehaviour
 
         StartCoroutine(GeneralTransition(endingPanel, endingCanvas));
     }
+
+    public void OnColeccionablesPressed()
+    {
+    currentActivePanel = coleccionablePanel;
+    currentActiveCanvas = coleccionableCanvas;
+
+    StartCoroutine(GeneralTransition(coleccionablePanel, coleccionableCanvas));
+    }
+
 
     // ---------------------------
     //  LÓGICA GENERAL DE TRANSICIÓN
