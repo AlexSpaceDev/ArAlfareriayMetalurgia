@@ -14,33 +14,34 @@ public class CollectibleUI : MonoBehaviour
     public float unlockFadeDuration = 0.3f;
 
     [Header("ID del coleccionable")]
-    public string collectibleID = "canuto"; // puedes usar un enum luego
+    public GameData.CollectibleID collectibleID;
 
     private bool unlocked;
     private bool revealed;
+    private int index;
 
     void Start()
     {
+        index = (int)collectibleID;
+
         LoadState();
         ApplyInitialVisualState();
     }
 
+    // ============================
+    // CARGAR ESTADO
+    // ============================
     void LoadState()
     {
-        if (collectibleID == "canuto")
-        {
-            unlocked = GameData.collectibleCanutoUnlocked;
-            revealed = GameData.collectibleCanutoRevealed;
-        }
+        unlocked = GameData.collectibleUnlocked[index];
+        revealed = GameData.collectibleRevealed[index];
     }
 
+    // Guardar revelado
     void SaveRevealed()
     {
-        if (collectibleID == "canuto")
-        {
-            GameData.collectibleCanutoRevealed = true;
-            SaveManager.SaveGame();
-        }
+        GameData.collectibleRevealed[index] = true;
+        SaveManager.SaveGame();
     }
 
     // ============================

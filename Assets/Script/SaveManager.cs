@@ -12,11 +12,6 @@ public static class SaveManager
         PlayerPrefs.SetInt("finalCUnlocked", GameData.finalCUnlocked ? 1 : 0);
         PlayerPrefs.SetInt("finalDUnlocked", GameData.finalDUnlocked ? 1 : 0);
         
-
-        PlayerPrefs.SetInt("collectibleCanutoUnlocked", GameData.collectibleCanutoUnlocked ? 1 : 0);
-        PlayerPrefs.SetInt("collectibleCanutoRevealed", GameData.collectibleCanutoRevealed ? 1 : 0);
-
-
         PlayerPrefs.SetInt("finalToShow", GameData.finalToShow);
 
         PlayerPrefs.SetInt("finalARevealed", GameData.finalARevealed ? 1 : 0);
@@ -25,6 +20,11 @@ public static class SaveManager
         PlayerPrefs.SetInt("finalDRevealed", GameData.finalDRevealed ? 1 : 0);
 
 
+        for (int i = 0; i < 8; i++)
+        {
+            PlayerPrefs.SetInt($"collectibleUnlocked_{i}", GameData.collectibleUnlocked[i] ? 1 : 0);
+            PlayerPrefs.SetInt($"collectibleRevealed_{i}", GameData.collectibleRevealed[i] ? 1 : 0);
+        }
 
         PlayerPrefs.Save();
     }
@@ -45,16 +45,30 @@ public static class SaveManager
         GameData.finalCUnlocked = PlayerPrefs.GetInt("finalCUnlocked") == 1;
         GameData.finalDUnlocked = PlayerPrefs.GetInt("finalDUnlocked") == 1;
 
-
-        GameData.collectibleCanutoUnlocked = PlayerPrefs.GetInt("collectibleCanutoUnlocked") == 1;
-        GameData.collectibleCanutoRevealed = PlayerPrefs.GetInt("collectibleCanutoRevealed") == 1;
-
-
         GameData.finalToShow = PlayerPrefs.GetInt("finalToShow");
 
         GameData.finalARevealed = PlayerPrefs.GetInt("finalARevealed") == 1;
         GameData.finalBRevealed = PlayerPrefs.GetInt("finalBRevealed") == 1;
         GameData.finalCRevealed = PlayerPrefs.GetInt("finalCRevealed") == 1;
         GameData.finalDRevealed = PlayerPrefs.GetInt("finalDRevealed") == 1;
+
+        for (int i = 0; i < 8; i++)
+        {
+            GameData.collectibleUnlocked[i] = PlayerPrefs.GetInt($"collectibleUnlocked_{i}", 0) == 1;
+            GameData.collectibleRevealed[i] = PlayerPrefs.GetInt($"collectibleRevealed_{i}", 0) == 1;
+        }
+
     }
+
+    public static void ResetCollectiblesInSave()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            PlayerPrefs.SetInt($"collectibleUnlocked_{i}", 0);
+            PlayerPrefs.SetInt($"collectibleRevealed_{i}", 0);
+        }
+
+        PlayerPrefs.Save();
+    }
+
 }

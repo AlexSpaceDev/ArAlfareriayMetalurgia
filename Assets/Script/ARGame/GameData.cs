@@ -41,9 +41,8 @@ public static class GameData
     public static bool tempCompletedMetalurgia = false;
 
     // Variables para coleccionables
-    public static bool collectibleCanutoUnlocked = false;   // Guardado global
-    public static bool collectibleCanutoRevealed = false;   // Para saber si ya se mostró la animación
-
+    public static bool[] collectibleUnlocked = new bool[8];
+    public static bool[] collectibleRevealed = new bool[8];
 
 
     public static void StartNewRun()
@@ -54,6 +53,27 @@ public static class GameData
         directMetalurgia = false;
 
         // NO tocamos finalAUnlocked ni finalCUnlocked (son globales)
+    }
+
+    public enum CollectibleID
+    {
+        Canuto = 0,
+        Crisol = 1,
+        Molde = 2,
+        Hacha = 3,
+        Arcilla = 4,
+        Bruñir = 5,
+        Leña = 6,
+        Pieza = 7
+    }
+
+    public static void ResetCollectibles()
+    {
+        for (int i = 0; i < collectibleUnlocked.Length; i++)
+        {
+            collectibleUnlocked[i] = false;
+            collectibleRevealed[i] = false;
+        }
     }
 
 } 
