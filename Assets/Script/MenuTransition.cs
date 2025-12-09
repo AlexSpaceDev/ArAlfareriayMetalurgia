@@ -69,10 +69,10 @@ public class MenuTransition : MonoBehaviour
 
     public void OnColeccionablesPressed()
     {
-    currentActivePanel = coleccionablePanel;
-    currentActiveCanvas = coleccionableCanvas;
+        currentActivePanel = coleccionablePanel;
+        currentActiveCanvas = coleccionableCanvas;
 
-    StartCoroutine(GeneralTransition(coleccionablePanel, coleccionableCanvas));
+        StartCoroutine(GeneralTransition(coleccionablePanel, coleccionableCanvas));
     }
 
 

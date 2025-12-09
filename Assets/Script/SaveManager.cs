@@ -11,6 +11,11 @@ public static class SaveManager
         PlayerPrefs.SetInt("finalBUnlocked", GameData.finalBUnlocked ? 1 : 0);
         PlayerPrefs.SetInt("finalCUnlocked", GameData.finalCUnlocked ? 1 : 0);
         PlayerPrefs.SetInt("finalDUnlocked", GameData.finalDUnlocked ? 1 : 0);
+        
+
+        PlayerPrefs.SetInt("collectibleCanutoUnlocked", GameData.collectibleCanutoUnlocked ? 1 : 0);
+        PlayerPrefs.SetInt("collectibleCanutoRevealed", GameData.collectibleCanutoRevealed ? 1 : 0);
+
 
         PlayerPrefs.SetInt("finalToShow", GameData.finalToShow);
 
@@ -18,6 +23,8 @@ public static class SaveManager
         PlayerPrefs.SetInt("finalBRevealed", GameData.finalBRevealed ? 1 : 0);
         PlayerPrefs.SetInt("finalCRevealed", GameData.finalCRevealed ? 1 : 0);
         PlayerPrefs.SetInt("finalDRevealed", GameData.finalDRevealed ? 1 : 0);
+
+
 
         PlayerPrefs.Save();
     }
@@ -37,6 +44,11 @@ public static class SaveManager
         GameData.finalBUnlocked = PlayerPrefs.GetInt("finalBUnlocked") == 1;
         GameData.finalCUnlocked = PlayerPrefs.GetInt("finalCUnlocked") == 1;
         GameData.finalDUnlocked = PlayerPrefs.GetInt("finalDUnlocked") == 1;
+
+
+        GameData.collectibleCanutoUnlocked = PlayerPrefs.GetInt("collectibleCanutoUnlocked") == 1;
+        GameData.collectibleCanutoRevealed = PlayerPrefs.GetInt("collectibleCanutoRevealed") == 1;
+
 
         GameData.finalToShow = PlayerPrefs.GetInt("finalToShow");
 

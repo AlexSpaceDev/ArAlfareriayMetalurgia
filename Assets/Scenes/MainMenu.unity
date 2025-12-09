@@ -3314,8 +3314,9 @@ GameObject:
   - component: {fileID: 641019312}
   - component: {fileID: 641019311}
   - component: {fileID: 641019310}
+  - component: {fileID: 641019315}
   m_Layer: 5
-  m_Name: "Ca\xF1uto_Button"
+  m_Name: Canuto_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3450,6 +3451,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641019308}
   m_CullTransparentMesh: 1
+--- !u!114 &641019315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641019308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c194340cd0e13934abd1c63ba284fe29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollectibleUI
+  buttonImage: {fileID: 641019313}
+  lockImage: {fileID: 2082367914}
+  shakeAmount: 10
+  shakeDuration: 0.2
+  unlockFadeDuration: 0.3
+  collectibleID: canuto
 --- !u!1 &668548601
 GameObject:
   m_ObjectHideFlags: 0

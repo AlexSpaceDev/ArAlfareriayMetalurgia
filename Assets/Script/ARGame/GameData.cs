@@ -40,6 +40,11 @@ public static class GameData
     public static bool tempCompletedAlfareria = false;
     public static bool tempCompletedMetalurgia = false;
 
+    // Variables para coleccionables
+    public static bool collectibleCanutoUnlocked = false;   // Guardado global
+    public static bool collectibleCanutoRevealed = false;   // Para saber si ya se mostró la animación
+
+
 
     public static void StartNewRun()
     {
