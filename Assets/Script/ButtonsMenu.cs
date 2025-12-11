@@ -7,6 +7,11 @@ public class ButtonsMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Prologue");
     }
+
+    public void BackMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     
     public void QuitGame()
     {

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
     {
         public void Finalizar()
         {
+            
             // Si no se está jugando una partida no se debería mostrar final
             if (!GameData.isPlaying)
                 return;
@@ -40,6 +41,7 @@ using UnityEngine.SceneManagement;
             // (Muy raro: no terminó nada)
             GameData.finalToShow = 0;
             EndRun();
+            
         }
 
         void EndRun()

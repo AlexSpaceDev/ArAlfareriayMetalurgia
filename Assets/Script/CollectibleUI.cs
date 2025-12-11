@@ -116,4 +116,15 @@ public class CollectibleUI : MonoBehaviour
         // Guardar estado revelado
         SaveRevealed();
     }
+
+    // ============================
+    // LLAMAR A LÓGICA DE MOSTRAR COLECCIONABLE
+    // ============================
+
+    public void OnClick()
+    {
+        if (!unlocked) return;
+        ShowCollectiblePanel.Instance.Show(index);
+    }
+
 }
