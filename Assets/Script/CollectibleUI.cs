@@ -53,7 +53,7 @@ public class CollectibleUI : MonoBehaviour
         {
             // Estado bloqueado
             lockImage.gameObject.SetActive(true);
-            lockImage.color = new Color(1, 1, 1, 1);
+            lockImage.color = new Color32(195, 195, 195, 244);
             buttonImage.color = new Color(0.3f, 0.3f, 0.3f, 1); // oscurecido
         }
         else
