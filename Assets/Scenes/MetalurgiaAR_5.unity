@@ -572,14 +572,14 @@ MonoBehaviour:
   PreviewVisible: 1
   RuntimeOcclusion: 0
   RuntimeCollider: 0
-  mTrackableName: 5 bg
+  mTrackableName: WhatsApp Image 2025-11-27 at 12.33.11
   mInitializedInEditor: 1
   mDataSetPath: 
-  mAspectRatio: 0.88630486
+  mAspectRatio: 1
   mImageTargetType: 3
   mWidth: 0.19999997
-  mHeight: 0.17726095
-  mRuntimeTexture: {fileID: 2800000, guid: 5b1d8f416db4cf548aa73d763200b631, type: 3}
+  mHeight: 0.19999997
+  mRuntimeTexture: {fileID: 2800000, guid: 85323f973cc3a7b4fa78aea84bf1c5f4, type: 3}
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Vuforia.Unity.Engine.dll::Vuforia.ImageTargetPreview
   mObserverBehaviour: {fileID: 439819273}
   mHiddenRoot: {fileID: 0}
-  mTargetName: 5 bg
+  mTargetName: WhatsApp Image 2025-11-27 at 12.33.11
   mDatasetName: 
   mCastedBehaviour: {fileID: 439819273}
   mMeshFilter: {fileID: 0}
